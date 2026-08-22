@@ -344,3 +344,20 @@ Apache-2.0 `LICENSE` added. Notes plus small **routing** backups under each `doc
 2ch Channel D is the parked working rig. Next blackhole session: **16ch**, Traktor **A/B/C → Maschine sampler → S88 keys**. KK does **not** sample live deck audio; leave it quit for that work. Open question: Internal Traktor may not offer three independent deck outs — 16ch alone does not invent them.
 
 David moving to a new music-cataloging repo in the meantime.
+
+---
+
+## 2026-08-22 — Next session brief (do not start sampling first)
+
+Order when we reopen this repo:
+
+1. **Port 2ch → 16ch** (`Traktor S8 + BlackHole`). Same Master 1–2 / Monitor 3–4 / D = first BH pair / KK+Maschine on BH 16ch 1–2. Validate: tone, Traktor A, S88 only on Channel D.
+2. **Then** A/B/C → Maschine sampler → S88. KK out. Internal still has no per-deck outs — decide sends vs External.
+3. **Web:** Ableton Link (Traktor + Maschine **LINK** buttons) is tempo/phase only. Search if anyone sampled Traktor decks into Maschine; don’t confuse Link with the tap.
+4. **Commit + push after (1) works.**
+
+---
+
+## 2026-08-22 — Wrapped. Success intensifies.
+
+Piano on the S88, lights on the keys, Channel D only. Intel path got us hearing; MIDI Port 1 + BH 2ch got us control. I directed, agent lifted, we coded. Parking it. Cataloging in another repo until 16ch.

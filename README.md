@@ -1,36 +1,30 @@
 # blackhole
 
-Performance-rig audio + MIDI routing for [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org) on host `ix`.
+David’s performance rig on `ix`. I point, the agent heavy-lifts, we meet in the scripts. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
 
-**Working (2026-08-22):** S88 MkII → Komplete Kontrol 3.5.4 or Maschine 2 → **BlackHole 2ch** → Traktor Pro 4 Channel D (Live Input) → S8 Channel D fader. Traktor’s audio device is **Aggregate Device Maschine** (S8 + BlackHole 2ch + Mac speakers).
+**2026-08-22 — success intensifies.** S88 keys (Light Guide and all) into Komplete Kontrol or Maschine, down **BlackHole 2ch**, into Traktor Channel D, out the S8 fader. Not the whole mixer. That was the fight. We won.
 
-**16ch** is the next graph (separate pairs + a Traktor-A tap into Maschine). Do not switch the live session until the 2ch path is committed.
+Traktor’s box: **Aggregate Device Maschine** (S8 + BlackHole 2ch + Mac speakers). S88 straight into the Mac + wall wart. Rekordbox / FLX10 stays a later problem — leftover maps on disk, keep RB shut.
 
-Rekordbox + DDJ-FLX10 is still a stretch (RB leftover MIDI maps can steal Traktor buttons). Keep RB closed.
+**Next time:** copy this graph onto **16ch**, prove it still behaves, *then* tap Traktor A/B/C into Maschine for S88 sampling. KK does not sample decks. Ableton Link is clock, not audio. Cataloging lives in another repo until then.
 
-Library repo: [ixamal/music_migration](https://github.com/ixamal/music_migration).
-
-License: [Apache-2.0](LICENSE). App notes (not vendor dumps): [`docs/settings/`](docs/settings/README.md).
+Library: [ixamal/music_migration](https://github.com/ixamal/music_migration). License: [Apache-2.0](LICENSE).
 
 ## Docs
 
-| Doc | Purpose |
-|-----|---------|
-| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | Recreate the working rig, GUI settings, rollback, tools |
-| [`docs/settings/`](docs/settings/README.md) | Per-app notes: Traktor, KK, Maschine, Rekordbox |
-| [`docs/MASTER_CONTEXT.md`](docs/MASTER_CONTEXT.md) | Device map and audio graph |
-| [`docs/PROGRESS.md`](docs/PROGRESS.md) | Session journal |
-| [`scripts/README.md`](scripts/README.md) | `python3 scripts/rig.py` commands |
-
-## Quick check
+| Doc | What |
+|-----|------|
+| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | How we actually did it |
+| [`docs/settings/`](docs/settings/README.md) | Per-app notes + small routing backups |
+| [`docs/MASTER_CONTEXT.md`](docs/MASTER_CONTEXT.md) | Device map |
+| [`docs/PROGRESS.md`](docs/PROGRESS.md) | The log |
+| [`scripts/README.md`](scripts/README.md) | `python3 scripts/rig.py` |
 
 ```bash
 python3 scripts/rig.py status
 python3 scripts/rig.py tone
 ```
 
-Listen on the **S8**, not the Mac.
+Listen on the **S8**.
 
-## Remote
-
-- GitHub: https://github.com/ixamal/blackhole (docs + scripts only — no audio, NML, TSI, `master.db`)
+GitHub is docs + scripts. No audio, no NML, no random TSI, no `master.db`. Dated routing dumps only under `docs/settings/*/files/`.

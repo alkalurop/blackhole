@@ -89,7 +89,7 @@ That KK path is **not** Channel D. KK sums onto S8 master/phones at Core Audio. 
 2. **S8 + Traktor** — **Aggregate Device Maschine**, Master 1–2 / Monitor 3–4, Deck D = 11–12 Live Input.
 3. **S88 + KK** — MIDI Input Port 1; audio **BlackHole 2ch** → Channel D. **Working.**
 4. **Maschine** — same 2ch pair; quit KK so the S88 is free. **Working enough to pause.**
-5. **Next session (16ch):** Traktor **A / B / C** taps → Maschine sampler → S88 keys. **Komplete Kontrol does not do this** (no live input sampler). KK stays quit while sampling. Design question: Internal mixing only has Master / Monitor / Record (plus Ext FX) — three independent deck taps may need extra Traktor sends, not just more BlackHole channels.
+5. **Next session (16ch), in order:** (A) Port today’s Channel D graph onto `Traktor S8 + BlackHole` (16ch) and **prove it still works**. (B) Only then map A/B/C → Maschine → S88 keys. KK does **not** sample decks. (C) Search Ableton **Link** writeups — Link is clock, not audio. (D) **Commit and push after A is validated.** Do not commit mid-port.
 6. **Stretch: Rekordbox + FLX10** — leftover S8/S88 maps on disk. Keep RB closed.
 
 ---

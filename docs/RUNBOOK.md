@@ -1,10 +1,10 @@
 # RUNBOOK — working 2ch Channel D rig (`ix`, 2026-08-22)
 
-How to recreate the state that actually played: S88 keys → Komplete Kontrol or Maschine → BlackHole 2ch → Traktor Channel D → S8 Channel D fader.
+How we got S88 keys into Channel D and nowhere else. Recreate from here.
 
-Architecture snapshot: [`MASTER_CONTEXT.md`](MASTER_CONTEXT.md). Session narrative: [`PROGRESS.md`](PROGRESS.md). Tools: [`../scripts/README.md`](../scripts/README.md). Per-app notes: [`settings/`](settings/README.md).
+[`MASTER_CONTEXT.md`](MASTER_CONTEXT.md) · [`PROGRESS.md`](PROGRESS.md) · [`settings/`](settings/README.md) · [`../scripts/README.md`](../scripts/README.md)
 
-**16ch is the future** (separate pairs for KK vs Maschine, and a tap from Traktor A into Maschine without muting D). Do not switch the live rig to 16ch until this 2ch path is committed and trusted.
+**2ch is parked and on GitHub.** Next open: port this onto 16ch and *prove it* before any A/B/C sampling.
 
 ---
 
@@ -230,15 +230,37 @@ Browse vs load: Battery ticks in the KK browser are **prehear**. Pianos often ha
 
 ---
 
-## 11. Next session: 16ch — Traktor A/B/C → Maschine → S88 keys
+## 11. Next session — order of work (do not skip ahead)
 
-**Komplete Kontrol will not do this.** KK hosts instruments and plays the S88. It has no sampler that records Traktor deck audio onto keys. Maschine does. Quit KK so Maschine owns the S88.
+Commit `fc0a0fe` is the 2ch park. **Do not commit/push again until this 16ch port is proven.** Then try sampling.
 
-Goal: three taps (Channel A, B, C) into BlackHole pairs → Maschine Sampling → play those clips on the S88. Do **not** dump the master into the same pair that feeds Channel D (feedback). Leave the working 2ch D path trusted until the new graph is proven.
+### Step A — Port what works now onto 16ch
 
-Open design question: Traktor **Internal** mixing exposes Master / Monitor / Record (and Ext FX), not three labeled “Output Deck A/B/C.” 16ch is the cable. Getting A, B, and C as three separate buses is a Traktor routing problem — solve that before destroying the Intel 2ch aggregates.
+Same listen path, more pipes. Do **not** start A/B/C mapping until this matches today’s 2ch behavior.
 
-Leftover script already builds `Traktor S8 + BlackHole` (S8 + BlackHole 16ch, 26/20, clock S8). Do not point the live session at it until a 16ch section is written on top of this 2ch commit.
+1. Keep Intel 2ch aggregates until the 16ch device is trusted (rollback: stay on `Aggregate Device Maschine`).
+2. Create/use `Traktor S8 + BlackHole` (S8 first + BlackHole **16ch**, clock S8, drift BH). Script: `python3 scripts/rig.py leftover-16ch --create`.
+3. Traktor: device = that 16ch aggregate. Internal. Master **1–2**, Monitor **3–4**. Deck D Live Input = first BlackHole pair (in 11–12 if S8 is still first).
+4. KK / Maschine: device **BlackHole 16ch**, Out 1 = **1 / 2** only (not aggregate Master). MIDI Input S88 Port 1; S8 off. KK quit if Maschine owns the S88.
+5. **Validate = today’s proof:** `python3 scripts/rig.py tone --device "Traktor S8 + BlackHole"` heard on S8 master. Traktor A plays on S8. S88 → KK or Maschine → **only Channel D** fader. A/B/C down.
+
+If that fails, destroy nothing; switch Traktor back to **Aggregate Device Maschine** and stop.
+
+### Step B — After Step A is solid: A/B/C → Maschine → S88 keys
+
+**Komplete Kontrol will not do this.** No live-deck sampler. Maschine records; S88 plays. KK stays quit.
+
+Internal mixing still has no “Output Deck A/B/C.” 16ch does not invent those buses. Decide Internal-vs-External (or Ext FX / sequential solo) before assigning BH 3–4, 5–6, 7–8. Never dump Master/Record onto the same pair that feeds Channel D.
+
+### Step C — Web check: Link vs audio
+
+Before inventing a tap, search what others did with **Traktor + Maschine + Ableton Link** (NI calls it Link; header button **LINK** in both apps). Official NI: Link syncs **tempo and phase only** on the same Mac or LAN. It does **not** move Channel A audio into Maschine. Dubspot-style writeups use Link for clock and a **separate** loopback for Maschine→Traktor D (the reverse of A/B/C→Maschine). Look for anyone who sampled Traktor decks into Maschine pads/keys; do not treat Link as the sample path.
+
+Start here: [NI — Sync Traktor and Maschine using Ableton Link](https://support.native-instruments.com/hc/en-us/articles/214423065-How-to-Sync-TRAKTOR-and-MASCHINE-Using-Ableton-Link).
+
+### Step D — Then commit and push
+
+Only after Step A is validated (and notes updated). Sampling (B) can be the session after that if A ate the night.
 
 ---
 
