@@ -1,5 +1,6 @@
 # Cursor Rules
 - Always read `docs/MASTER_CONTEXT.md` for rig state, device map, and audio graph.
+- Recreate / operate the working 2ch Channel D path from `docs/RUNBOOK.md`.
 - Log session progress in `docs/PROGRESS.md`; keep architecture in MASTER_CONTEXT.
 - GitHub remote: https://github.com/ixamal/blackhole (docs + routing notes only — never commit audio, NML, TSI, or master.db).
 - Git authorship: commits and PRs must be David alone — never add `Co-authored-by: Cursor`, `Made-with: Cursor`, or any Cursor attribution trailer.
@@ -7,7 +8,7 @@
 
 # Rig
 - Machine: David / Mac (Apple Silicon), host `ix`
-- Traktor Pro 4.5.1 on S88 MkII (primary) then S8 (stems / secondary)
+- Traktor Pro 4.5.1 on S8 (mixer, Channel D live in). S88 MkII is the keyboard into KK / Maschine.
 - Rekordbox 7 + DDJ-FLX10 is a stretch goal (MIDI conflict history)
 - Library lives in https://github.com/ixamal/music_migration (canned)
 
@@ -18,4 +19,4 @@
 4. Stretch: Rekordbox FLX10 dual-software without RB capturing Traktor MIDI.
 
 # Journal
-- Session narrative → docs/PROGRESS.md; architecture → docs/MASTER_CONTEXT.md; commits → git log.
+- Session narrative → docs/PROGRESS.md; architecture → docs/MASTER_CONTEXT.md; how-to → docs/RUNBOOK.md; commits → git log.

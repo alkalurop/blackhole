@@ -27,4 +27,16 @@ venv/
 *.nml
 *.tsi
 *.xml
+master.db
 !package.json
+
+# Dated routing snapshots only (not libraries)
+!docs/settings/**/files/*.tsi
+!docs/settings/**/files/*.dat
+!docs/settings/**/files/*.plist
+!docs/settings/**/files/*.csv
+!docs/settings/**/files/*.json
+
+# Local vendor snapshots (notes live in docs/settings/)
+settings-snapshots/*
+!settings-snapshots/README.md

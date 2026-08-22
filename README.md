@@ -1,30 +1,36 @@
 # blackhole
 
-Performance-rig audio + MIDI routing for [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
+Performance-rig audio + MIDI routing for [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org) on host `ix`.
 
-BlackHole virtual audio on David's Mac (`ix`). **Traktor Pro 4** on the **S8** (Channel D = live input). **S88 MkII** drives Maschine / Komplete; that audio reaches the S8 only through Traktor Channel D.
+**Working (2026-08-22):** S88 MkII → Komplete Kontrol 3.5.4 or Maschine 2 → **BlackHole 2ch** → Traktor Pro 4 Channel D (Live Input) → S8 Channel D fader. Traktor’s audio device is **Aggregate Device Maschine** (S8 + BlackHole 2ch + Mac speakers).
 
-**Rekordbox + DDJ-FLX10** is a stretch goal. On the last laptop, Rekordbox captured Traktor MIDI and drove the wrong buttons. Do not dual-map until S88 and S8 are clean on Traktor alone.
+**16ch** is the next graph (separate pairs + a Traktor-A tap into Maschine). Do not switch the live session until the 2ch path is committed.
 
-Library migration is a separate canned repo: [ixamal/music_migration](https://github.com/ixamal/music_migration).
+Rekordbox + DDJ-FLX10 is still a stretch (RB leftover MIDI maps can steal Traktor buttons). Keep RB closed.
 
-**Living log:** `docs/PROGRESS.md` + `git log`.
+Library repo: [ixamal/music_migration](https://github.com/ixamal/music_migration).
+
+License: [Apache-2.0](LICENSE). App notes (not vendor dumps): [`docs/settings/`](docs/settings/README.md).
 
 ## Docs
 
 | Doc | Purpose |
 |-----|---------|
-| [`docs/MASTER_CONTEXT.md`](docs/MASTER_CONTEXT.md) | Rig, devices, audio graph, phases |
-| [`docs/PROGRESS.md`](docs/PROGRESS.md) | Session log |
+| [`docs/RUNBOOK.md`](docs/RUNBOOK.md) | Recreate the working rig, GUI settings, rollback, tools |
+| [`docs/settings/`](docs/settings/README.md) | Per-app notes: Traktor, KK, Maschine, Rekordbox |
+| [`docs/MASTER_CONTEXT.md`](docs/MASTER_CONTEXT.md) | Device map and audio graph |
+| [`docs/PROGRESS.md`](docs/PROGRESS.md) | Session journal |
+| [`scripts/README.md`](scripts/README.md) | `python3 scripts/rig.py` commands |
 
-## Phases
+## Quick check
 
-1. BlackHole **16ch** + aggregate `Traktor S8 + BlackHole` (clock = S8)
-2. S8 + Traktor (Channel D = aggregate in 11–12)
-3. S88 MkII + Maschine / Komplete without stealing S8 I/O
-4. Stretch: Rekordbox on FLX10 without MIDI bleed into Traktor
+```bash
+python3 scripts/rig.py status
+python3 scripts/rig.py tone
+```
+
+Listen on the **S8**, not the Mac.
 
 ## Remote
 
-- GitHub: https://github.com/ixamal/blackhole
-- Sibling: https://github.com/ixamal/music_migration
+- GitHub: https://github.com/ixamal/blackhole (docs + scripts only — no audio, NML, TSI, `master.db`)

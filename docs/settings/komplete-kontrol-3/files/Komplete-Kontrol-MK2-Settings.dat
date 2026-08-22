@@ -1,0 +1,425 @@
+{
+    "Version": "4",
+    "ActiveTemplateIndex": "0",
+    "VelocityCurve": "3",
+    "templates": {
+        "0": {
+            "Name": "Template 1",
+            "keyzones": {
+                "0": {
+                    "UpperKey": "127",
+                    "Transpose": "0",
+                    "Channel": "0",
+                    "Off": "false",
+                    "Color": "11"
+                }
+            },
+            "pages": {
+                "0": {
+                    "knobs": {
+                        "0": {
+                            "Name": "CC 14",
+                            "MIDIType": "3",
+                            "MIDIId": "14",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "1": {
+                            "Name": "CC 15",
+                            "MIDIType": "3",
+                            "MIDIId": "15",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "2": {
+                            "Name": "CC 16",
+                            "MIDIType": "3",
+                            "MIDIId": "16",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "3": {
+                            "Name": "CC 17",
+                            "MIDIType": "3",
+                            "MIDIId": "17",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "4": {
+                            "Name": "CC 18",
+                            "MIDIType": "3",
+                            "MIDIId": "18",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "5": {
+                            "Name": "CC 19",
+                            "MIDIType": "3",
+                            "MIDIId": "19",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "6": {
+                            "Name": "CC 20",
+                            "MIDIType": "3",
+                            "MIDIId": "20",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "7": {
+                            "Name": "CC 21",
+                            "MIDIType": "3",
+                            "MIDIId": "21",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        }
+                    },
+                    "buttons": {
+                        "0": {
+                            "Name": "CC 112",
+                            "MIDIType": "3",
+                            "MIDIId": "112",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "1": {
+                            "Name": "CC 113",
+                            "MIDIType": "3",
+                            "MIDIId": "113",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "2": {
+                            "Name": "CC 114",
+                            "MIDIType": "3",
+                            "MIDIId": "114",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "3": {
+                            "Name": "CC 115",
+                            "MIDIType": "3",
+                            "MIDIId": "115",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "4": {
+                            "Name": "CC 116",
+                            "MIDIType": "3",
+                            "MIDIId": "116",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "5": {
+                            "Name": "CC 117",
+                            "MIDIType": "3",
+                            "MIDIId": "117",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "6": {
+                            "Name": "CC 118",
+                            "MIDIType": "3",
+                            "MIDIId": "118",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "7": {
+                            "Name": "CC 119",
+                            "MIDIType": "3",
+                            "MIDIId": "119",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        }
+                    }
+                },
+                "1": {
+                    "knobs": {
+                        "0": {
+                            "Name": "CC 22",
+                            "MIDIType": "3",
+                            "MIDIId": "22",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "1": {
+                            "Name": "CC 23",
+                            "MIDIType": "3",
+                            "MIDIId": "23",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "2": {
+                            "Name": "CC 24",
+                            "MIDIType": "3",
+                            "MIDIId": "24",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "3": {
+                            "Name": "CC 25",
+                            "MIDIType": "3",
+                            "MIDIId": "25",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "4": {
+                            "Name": "CC 26",
+                            "MIDIType": "3",
+                            "MIDIId": "26",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "5": {
+                            "Name": "CC 27",
+                            "MIDIType": "3",
+                            "MIDIId": "27",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "6": {
+                            "Name": "CC 28",
+                            "MIDIType": "3",
+                            "MIDIId": "28",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        },
+                        "7": {
+                            "Name": "CC 29",
+                            "MIDIType": "3",
+                            "MIDIId": "29",
+                            "Channel": "0",
+                            "Min": "0",
+                            "Max": "127",
+                            "Inc": "1",
+                            "Mode": "0"
+                        }
+                    },
+                    "buttons": {
+                        "0": {
+                            "Name": "CC 112",
+                            "MIDIType": "3",
+                            "MIDIId": "112",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "1": {
+                            "Name": "CC 113",
+                            "MIDIType": "3",
+                            "MIDIId": "113",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "2": {
+                            "Name": "CC 114",
+                            "MIDIType": "3",
+                            "MIDIId": "114",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "3": {
+                            "Name": "CC 115",
+                            "MIDIType": "3",
+                            "MIDIId": "115",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "4": {
+                            "Name": "CC 116",
+                            "MIDIType": "3",
+                            "MIDIId": "116",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "5": {
+                            "Name": "CC 117",
+                            "MIDIType": "3",
+                            "MIDIId": "117",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "6": {
+                            "Name": "CC 118",
+                            "MIDIType": "3",
+                            "MIDIId": "118",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        },
+                        "7": {
+                            "Name": "CC 119",
+                            "MIDIType": "3",
+                            "MIDIId": "119",
+                            "Channel": "0",
+                            "Off": "0",
+                            "On": "127",
+                            "Inc": "0",
+                            "Behavior": "0"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "pedals": {
+        "pedalA": {
+            "MIDIType": "3",
+            "MIDIId": "11",
+            "Channel": "0",
+            "Min": "0",
+            "Max": "127"
+        },
+        "pedalConfigA": {
+            "ContiniuousMode": "false",
+            "Invert": "false",
+            "SwapTR": "false"
+        },
+        "fsTipA": {
+            "MIDIType": "3",
+            "MIDIId": "64",
+            "Channel": "0",
+            "Off": "0",
+            "On": "127",
+            "Inc": "1",
+            "Behavior": "2"
+        },
+        "fsRingA": {
+            "MIDIType": "3",
+            "MIDIId": "65",
+            "Channel": "0",
+            "Off": "0",
+            "On": "127",
+            "Inc": "1",
+            "Behavior": "2"
+        },
+        "pedalB": {
+            "MIDIType": "3",
+            "MIDIId": "11",
+            "Channel": "0",
+            "Min": "0",
+            "Max": "127"
+        },
+        "pedalConfigB": {
+            "ContiniuousMode": "true",
+            "Invert": "false",
+            "SwapTR": "false"
+        },
+        "fsTipB": {
+            "MIDIType": "3",
+            "MIDIId": "64",
+            "Channel": "0",
+            "Off": "0",
+            "On": "127",
+            "Inc": "1",
+            "Behavior": "2"
+        },
+        "fsRingB": {
+            "MIDIType": "3",
+            "MIDIId": "65",
+            "Channel": "0",
+            "Off": "0",
+            "On": "127",
+            "Inc": "1",
+            "Behavior": "2"
+        }
+    },
+    "touchstrip": {
+        "MIDIType": "3",
+        "MIDIId": "11",
+        "Channel": "0",
+        "Min": "0",
+        "Max": "127",
+        "Param1": "4",
+        "CenterValue": "0",
+        "PhysicsModel": "0"
+    }
+}

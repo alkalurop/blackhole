@@ -1,20 +1,50 @@
 #!/usr/bin/env swift
-// Create or destroy the public aggregate: Traktor Kontrol S8 + BlackHole 16ch.
-// Clock = S8 @ 48 kHz. Drift correction on BlackHole only.
-// Does not change macOS default input/output. Does not touch rekordbox Aggregate Device.
+// Create or destroy the Intel-known-good public aggregates:
+//   Aggregate Device Maschine  = S8 + BlackHole 2ch + Mac speakers
+//   Aggregate Device s88 MK2   = S8 + BlackHole 2ch
+// Clock = S8 @ 48 kHz. Drift on BlackHole 2ch and speakers.
+// Does not change macOS default input/output. Does not touch rekordbox Aggregate Device
+// or last night's Traktor S8 + BlackHole (16ch) device.
 //
-//   swift scripts/traktor_s8_blackhole_aggregate.swift
-//   swift scripts/traktor_s8_blackhole_aggregate.swift --destroy
+//   swift scripts/intel_aggregates.swift
+//   swift scripts/intel_aggregates.swift --destroy
 
 import CoreAudio
 import Foundation
 
-let aggregateName = "Traktor S8 + BlackHole"
-let aggregateUID = "com.ixamal.traktor-s8-blackhole"
 let sampleRate: Float64 = 48000
 let s8Name = "Traktor Kontrol S8"
-let blackHoleName = "BlackHole 16ch"
-let protectedNames: Set<String> = ["rekordbox Aggregate Device"]
+let blackHoleName = "BlackHole 2ch"
+let speakerCandidates = ["MacBook Pro Speakers", "MacBook Speakers", "Built-in Output"]
+let protectedNames: Set<String> = [
+    "rekordbox Aggregate Device",
+    "Traktor S8 + BlackHole",
+]
+
+struct Spec {
+    let name: String
+    let uid: String
+    let includeSpeakers: Bool
+    let expectedIn: Int
+    let expectedOut: Int
+}
+
+let specs: [Spec] = [
+    Spec(
+        name: "Aggregate Device Maschine",
+        uid: "com.ixamal.aggregate-maschine",
+        includeSpeakers: true,
+        expectedIn: 12,
+        expectedOut: 8
+    ),
+    Spec(
+        name: "Aggregate Device s88 MK2",
+        uid: "com.ixamal.aggregate-s88-mk2",
+        includeSpeakers: false,
+        expectedIn: 12,
+        expectedOut: 6
+    ),
+]
 
 enum CAError: Error, CustomStringConvertible {
     case status(String, OSStatus)
@@ -94,6 +124,13 @@ func findDevice(named name: String) throws -> AudioObjectID {
     throw CAError.notFound(name)
 }
 
+func findSpeaker() throws -> AudioObjectID {
+    for name in speakerCandidates {
+        if let id = try? findDevice(named: name) { return id }
+    }
+    throw CAError.notFound("Mac speakers (\(speakerCandidates.joined(separator: " / ")))")
+}
+
 func defaultDeviceID(selector: AudioObjectPropertySelector) throws -> AudioObjectID {
     var address = AudioObjectPropertyAddress(
         mSelector: selector,
@@ -138,84 +175,115 @@ func snapshotDefaults() throws {
     print("  input:         \((try? deviceName(inn)) ?? "?")")
 }
 
-func createAggregate() throws {
-    if let existing = try? findDevice(named: aggregateName) {
+func subdeviceEntry(uid: String, drift: Bool) -> [String: Any] {
+    var entry: [String: Any] = [
+        kAudioSubDeviceUIDKey: uid,
+        kAudioSubDeviceDriftCompensationKey: drift ? 1 : 0,
+    ]
+    if drift {
+        entry[kAudioSubDeviceDriftCompensationQualityKey] = kAudioSubDeviceDriftCompensationMaxQuality
+    }
+    return entry
+}
+
+func createOne(_ spec: Spec, s8UID: String, bhUID: String, speakerUID: String?) throws {
+    if let existing = try? findDevice(named: spec.name) {
         print("Already exists:")
         printDevice(existing)
-        try snapshotDefaults()
         return
     }
 
-    let s8 = try findDevice(named: s8Name)
-    let blackHole = try findDevice(named: blackHoleName)
-    let s8UID = try deviceUID(s8)
-    let bhUID = try deviceUID(blackHole)
-
-    print("Subdevices (S8 first = mixer stays on outputs 1–4):")
-    printDevice(s8)
-    printDevice(blackHole)
-
-    try setNominalRate(s8, rate: sampleRate)
-    try setNominalRate(blackHole, rate: sampleRate)
+    var subdevices: [[String: Any]] = [
+        subdeviceEntry(uid: s8UID, drift: false),
+        subdeviceEntry(uid: bhUID, drift: true),
+    ]
+    if spec.includeSpeakers, let speakerUID {
+        subdevices.append(subdeviceEntry(uid: speakerUID, drift: true))
+    }
 
     let description: [String: Any] = [
-        kAudioAggregateDeviceNameKey: aggregateName,
-        kAudioAggregateDeviceUIDKey: aggregateUID,
+        kAudioAggregateDeviceNameKey: spec.name,
+        kAudioAggregateDeviceUIDKey: spec.uid,
         kAudioAggregateDeviceMainSubDeviceKey: s8UID,
         kAudioAggregateDeviceClockDeviceKey: s8UID,
         kAudioAggregateDeviceIsPrivateKey: 0,
         kAudioAggregateDeviceIsStackedKey: 0,
-        kAudioAggregateDeviceSubDeviceListKey: [
-            [
-                kAudioSubDeviceUIDKey: s8UID,
-                kAudioSubDeviceDriftCompensationKey: 0,
-            ],
-            [
-                kAudioSubDeviceUIDKey: bhUID,
-                kAudioSubDeviceDriftCompensationKey: 1,
-                kAudioSubDeviceDriftCompensationQualityKey: kAudioSubDeviceDriftCompensationMaxQuality,
-            ],
-        ],
+        kAudioAggregateDeviceSubDeviceListKey: subdevices,
     ]
 
     var aggID = AudioObjectID(0)
     let err = AudioHardwareCreateAggregateDevice(description as CFDictionary, &aggID)
-    guard err == noErr, aggID != 0 else { throw CAError.status("AudioHardwareCreateAggregateDevice", err) }
+    guard err == noErr, aggID != 0 else { throw CAError.status("AudioHardwareCreateAggregateDevice \(spec.name)", err) }
 
     try setNominalRate(aggID, rate: sampleRate)
 
     print("Created:")
     printDevice(aggID)
-    try snapshotDefaults()
 
     let inn = try channelCount(aggID, scope: kAudioObjectPropertyScopeInput)
     let out = try channelCount(aggID, scope: kAudioObjectPropertyScopeOutput)
-    if inn != 26 || out != 20 {
-        fputs("Warning: expected 26 in / 20 out (S8 10/4 + BlackHole 16/16), got \(inn)/\(out)\n", stderr)
+    if inn != spec.expectedIn || out != spec.expectedOut {
+        fputs(
+            "Warning: expected \(spec.expectedIn) in / \(spec.expectedOut) out for \(spec.name), got \(inn)/\(out)\n",
+            stderr
+        )
     }
 }
 
-func destroyAggregate() throws {
-    let id = try findDevice(named: aggregateName)
-    let name = try deviceName(id)
-    if protectedNames.contains(name) {
-        fputs("Refusing to destroy protected device: \(name)\n", stderr)
-        exit(2)
+func createAggregates() throws {
+    let s8 = try findDevice(named: s8Name)
+    let blackHole = try findDevice(named: blackHoleName)
+    let speakers: AudioObjectID? = specNeedsSpeakers() ? try findSpeaker() : nil
+
+    let s8UID = try deviceUID(s8)
+    let bhUID = try deviceUID(blackHole)
+    let speakerUID: String? = try speakers.map { try deviceUID($0) }
+
+    print("Subdevices (S8 first = mixer stays on outputs 1–4):")
+    printDevice(s8)
+    printDevice(blackHole)
+    if let speakers { printDevice(speakers) }
+
+    try setNominalRate(s8, rate: sampleRate)
+    try setNominalRate(blackHole, rate: sampleRate)
+    if let speakers { try? setNominalRate(speakers, rate: sampleRate) }
+
+    for spec in specs {
+        try createOne(spec, s8UID: s8UID, bhUID: bhUID, speakerUID: speakerUID)
     }
-    print("Destroying:")
-    printDevice(id)
-    let err = AudioHardwareDestroyAggregateDevice(id)
-    guard err == noErr else { throw CAError.status("AudioHardwareDestroyAggregateDevice", err) }
-    print("Destroyed \(aggregateName).")
+    try snapshotDefaults()
+}
+
+func specNeedsSpeakers() -> Bool {
+    specs.contains { $0.includeSpeakers && (try? findDevice(named: $0.name)) == nil }
+}
+
+func destroyAggregates() throws {
+    for spec in specs.reversed() {
+        guard let id = try? findDevice(named: spec.name) else {
+            print("Not present: \(spec.name)")
+            continue
+        }
+        let name = try deviceName(id)
+        if protectedNames.contains(name) {
+            fputs("Refusing to destroy protected device: \(name)\n", stderr)
+            exit(2)
+        }
+        print("Destroying:")
+        printDevice(id)
+        let err = AudioHardwareDestroyAggregateDevice(id)
+        guard err == noErr else { throw CAError.status("AudioHardwareDestroyAggregateDevice \(spec.name)", err) }
+        print("Destroyed \(spec.name).")
+    }
     try snapshotDefaults()
 }
 
 do {
     let destroy = CommandLine.arguments.contains("--destroy")
     if destroy {
-        try destroyAggregate()
+        try destroyAggregates()
     } else {
-        try createAggregate()
+        try createAggregates()
     }
 } catch {
     fputs("\(error)\n", stderr)
