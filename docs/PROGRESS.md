@@ -361,3 +361,13 @@ Order when we reopen this repo:
 ## 2026-08-22 — Wrapped. Success intensifies.
 
 Piano on the S88, lights on the keys, Channel D only. Intel path got us hearing; MIDI Port 1 + BH 2ch got us control. I directed, agent lifted, we coded. Parking it. Cataloging in another repo until 16ch.
+
+---
+
+## 2026-08-23 — Reboot ate Deck D
+
+Traktor came back from login restore on a 2ch box. Input D menu was only Channel A L/R. Aggregate Device Maschine was still there (12/8). Relaunch Traktor, pick the aggregate, D = 11/12. Fine.
+
+KISS: Mac boots empty. Persistence off (`TALLogoutSavesState` / `LoginwindowLaunchesRelaunchApps` / `NSQuitAlwaysKeepsWindows` all false). Did not strip Google Drive, Dropbox, NI hardware agents, Adobe CC, or Autodesk Flow.
+
+**Epic Games Launcher** was a silent boot agent (`com.epicgames.launcher`, `-launchcontext=boot`). Disabled the job, `RunAtLoad` false, `StartOnBoot=False`. Next Epic session: uncheck **Run When My Computer Starts** so it does not put the agent back.

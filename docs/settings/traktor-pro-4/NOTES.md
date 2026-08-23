@@ -21,6 +21,8 @@ Quit Traktor before replacing that file. Never rewrite the TSI while the app is 
 
 Do **not** select: `Traktor Kontrol S8` alone, `Traktor S8 + BlackHole` (16ch leftover), FLX10, BlackHole 2ch/16ch as Traktor’s device.
 
+After a reboot, if Input D only lists Channel A L/R, Traktor is on a 2ch fallback (usually BlackHole 2ch). This Mac is set to **not** reopen apps at login. Launch Traktor yourself → Audio Device **Aggregate Device Maschine** → Input D **11 / 12**.
+
 ## Output Routing
 
 | Field | Working value |

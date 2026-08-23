@@ -56,6 +56,24 @@ Installer for 2ch (if this Mac is wiped): official pkg from [existential.audio/b
 
 **Do not** set BlackHole or any aggregate as the Mac’s default output. Defaults hop (speakers, AirPods, **FLX10** when it is plugged in). Leave them. Traktor must not follow.
 
+### Login — empty desk (2026-08-23)
+
+macOS was restoring whatever was open (Traktor included). Traktor then woke on a 2ch fallback before the aggregate was ready. D’s Maschine inputs vanished.
+
+KISS: **boot with no apps.** Set on this Mac:
+
+- `TALLogoutSavesState` = false
+- `LoginwindowLaunchesRelaunchApps` = false
+- `NSQuitAlwaysKeepsWindows` = false (Desktop & Dock: Close windows when quitting)
+
+Next Restart dialog: uncheck **Reopen windows when logging back in** if it still shows.
+
+Stay at login: Google Drive, Dropbox, NI hardware agents, Adobe CC, Autodesk Flow.
+
+**Epic Games Launcher is off.** It had its own LaunchAgent (`~/Library/LaunchAgents/com.epicgames.launcher.plist`, silent boot). Job disabled, `RunAtLoad` false, `StartOnBoot=False` in its settings. Next time you open Epic, uncheck **Run When My Computer Starts** or it will try to write that agent again.
+
+After a reboot: wait for S8 USB, then launch Traktor yourself. Audio Setup → **Aggregate Device Maschine**. Input D = 11/12.
+
 ---
 
 ## 3. Aggregates (Core Audio)
