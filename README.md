@@ -1,6 +1,6 @@
 # blackhole
 
-David’s performance rig on `ix`. I point, the agent heavy-lifts, we meet in the scripts. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
+David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
 
 **2026-08-22 — success intensifies.** S88 keys (Light Guide and all) into Komplete Kontrol or Maschine, down **BlackHole 2ch**, into Traktor Channel D, out the S8 fader. Not the whole mixer. That was the fight. We won.
 
