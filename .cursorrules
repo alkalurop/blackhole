@@ -3,7 +3,7 @@
 - Recreate / operate the working 2ch Channel D path from `docs/RUNBOOK.md`.
 - Log session progress in `docs/PROGRESS.md`; keep architecture in MASTER_CONTEXT.
 - GitHub remote: https://github.com/ixamal/blackhole (docs + routing notes only — never commit audio, NML, TSI, or master.db).
-- Git authorship: commits and PRs must be David alone — never add `Co-authored-by: Cursor`, `Made-with: Cursor`, or any Cursor attribution trailer.
+- Git authorship: commits and PRs must be David alone — never add `Co-authored-by: Cursor`, `Co-authored-by: Codex`, `Made-with: Cursor`, or any agent attribution trailer. We vibe-code in Cursor and Codex only.
 - Never change Audio MIDI Setup / Traktor / Rekordbox settings without a documented rollback.
 
 # Rig

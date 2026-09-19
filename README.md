@@ -2,6 +2,8 @@
 
 David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
 
+**Vibe coding.** Cursor and Codex only. Git commits are David — no Cursor or Codex co-author trailers.
+
 **2026-09-19 — 16ch Channel D live.** Traktor device **Traktor S8 + BlackHole**. Deck D = In 10/11 (BH 1–2). Maschine **BlackHole 16ch** Out 1 only. S88 → Channel D. 2ch rollback: **Aggregate Device Maschine** + `~/Music/blackhole_2ch/`.
 
 **11a live.** Traktor Record **7/8** (`Out 6`/`Out 7`) → Maschine In 2 → S88 → Channel D. Never Record **5/6**.
