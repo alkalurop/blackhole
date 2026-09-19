@@ -31,3 +31,11 @@ These are the smoking gun for “RB driving Traktor buttons.” Treat as evidenc
 ## When we get here
 
 New notes only: isolate MIDI so Rekordbox cannot bind S8 or S88. Dual-software is phase 5, not the working 2ch commit.
+
+## 11b — FLX10 → Maschine In 3 — **parked 2026-09-19**
+
+Using `FLX10 + BlackHole 2ch` as the Rekordbox **device** broke FLX10 master / booth / receiver. That aggregate is **destroyed**. Rekordbox stays **DDJ-FLX10**. Bridge stopped. 11a (16ch @ 48 kHz, 26/20) untouched.
+
+Next try, when David asks: native **DDJ-FLX10** + **PC MASTER OUT** → `MASTER + BlackHole 2ch` (never 16ch). Scripts remain (`flx10-2ch`, `flx10-bridge`).
+
+Do not add FLX10 to `Traktor S8 + BlackHole`. Do not edit `rekordbox Aggregate Device`. Leftover S8/S88 maps stay off.

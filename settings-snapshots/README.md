@@ -1,6 +1,8 @@
 # Local snapshots (not in git)
 
-Copy vendor settings **here on this Mac only** if you want a dated rollback. The folder contents are gitignored except this README.
+**Canonical rollback on this Mac:** `~/Music/blackhole_2ch/` (2026-09-19). Live Traktor / KK / Maschine / Core Audio plus the 2026-08-22 known-good copies. Not in git.
+
+This folder can still hold extra dated copies if you want them next to the repo. Contents are gitignored except this README.
 
 ```text
 settings-snapshots/

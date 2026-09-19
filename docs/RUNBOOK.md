@@ -1,10 +1,10 @@
-# RUNBOOK — working 2ch Channel D rig (`ix`, 2026-08-22)
+# RUNBOOK — working Channel D rig (`ix`)
 
 How we got S88 keys into Channel D and nowhere else. Recreate from here.
 
 [`MASTER_CONTEXT.md`](MASTER_CONTEXT.md) · [`PROGRESS.md`](PROGRESS.md) · [`settings/`](settings/README.md) · [`../scripts/README.md`](../scripts/README.md)
 
-**2ch is parked and on GitHub.** Next open: port this onto 16ch and *prove it* before any A/B/C sampling.
+**Live (2026-09-19):** **16ch Channel D** + **11a**. Traktor Record **7/8** (`Out 6`/`Out 7`) → Maschine In 2 → S88 → D. A, B, and C check. 2ch park: `~/Music/blackhole_2ch/`. Never Record **5/6**.
 
 ---
 
@@ -12,12 +12,15 @@ How we got S88 keys into Channel D and nowhere else. Recreate from here.
 
 Proven on `ix` (MacBook Pro 16-inch M5 Max, macOS Tahoe 26.5.1):
 
-1. A 440 Hz tone on **Aggregate Device Maschine** outs 1–2 is heard on **S8 master**.
-2. S88 keys play **The Gentleman** in Komplete Kontrol **3.5.4**, Light Guide flashes.
-3. KK audio device is **BlackHole 2ch**, Out 1 = 1/2. Traktor **Input Deck D** meters move. Sound follows the **S8 Channel D** fader only (A/B/C down).
-4. Same BlackHole 2ch pair is the intended Maschine output (KK closed so they do not fight for the S88).
+**16ch (2026-09-19, live):**
 
-If (1) fails, the aggregate / S8 listen path is broken. If (2) fails, it is MIDI (KK Preferences → MIDI → Input). If (3) fails, KK is still on the aggregate **Master 1–2** (whole mixer, no faders) or Traktor is not on the aggregate.
+1. A 440 Hz tone on **Traktor S8 + BlackHole** outs 1–2 is heard on **S8 master** (`python3 scripts/rig.py tone --device "Traktor S8 + BlackHole"`).
+2. Traktor A plays a stem on S8 (Internal, Master 1–2 / Monitor 3–4).
+3. S88 → KK or Maschine on **BlackHole 16ch** Out 1 = 1/2. Traktor **Input Deck D** = 11/12. Sound follows the **S8 Channel D** fader only (A/B/C down).
+
+**2ch (2026-08-22, rollback):** same proof on **Aggregate Device Maschine** + **BlackHole 2ch**. Archive: `~/Music/blackhole_2ch/`.
+
+If (1) fails, the aggregate / S8 listen path is broken. If (2) fails, Traktor is not on the 16ch aggregate or Output Master dropped. If (3) fails, KK/Maschine is still on the aggregate **Master 1–2** (whole mixer, no faders) or still writing **BlackHole 2ch** while Traktor is listening to 16ch.
 
 ---
 
@@ -250,35 +253,61 @@ Browse vs load: Battery ticks in the KK browser are **prehear**. Pianos often ha
 
 ## 11. Next session — order of work (do not skip ahead)
 
-Commit `fc0a0fe` is the 2ch park. **Do not commit/push again until this 16ch port is proven.** Then try sampling.
+### Step A — Port 2ch onto 16ch — **done 2026-09-19**
 
-### Step A — Port what works now onto 16ch
+Same listen path, more pipes. David heard the 16ch tone on S8, A played a stem, S88 stayed on Channel D only. 2ch aggregates left in place. Disk TSI/plists still say 2ch until Traktor / Maschine quit (do not snapshot while they are open).
 
-Same listen path, more pipes. Do **not** start A/B/C mapping until this matches today’s 2ch behavior.
+1. Keep Intel 2ch aggregates (rollback: **Aggregate Device Maschine** + `~/Music/blackhole_2ch/`).
+2. Use `Traktor S8 + BlackHole` (already created). Recreate: `python3 scripts/rig.py leftover-16ch --create`.
+3. Traktor GUI: device **Traktor S8 + BlackHole**. Internal. Master **1–2**, Monitor **3–4**. Deck D Live Input = **11 / 12**. Record not connected.
+4. KK / Maschine GUI: device **BlackHole 16ch**, Out 1 = **1 / 2**. MIDI Input S88 Port 1; S8 off. KK quit if Maschine owns the S88.
+5. Proof: tone on that aggregate, Traktor A on S8, S88 only on D.
 
-1. Keep Intel 2ch aggregates until the 16ch device is trusted (rollback: stay on `Aggregate Device Maschine`).
-2. Create/use `Traktor S8 + BlackHole` (S8 first + BlackHole **16ch**, clock S8, drift BH). Script: `python3 scripts/rig.py leftover-16ch --create`.
-3. Traktor: device = that 16ch aggregate. Internal. Master **1–2**, Monitor **3–4**. Deck D Live Input = first BlackHole pair (in 11–12 if S8 is still first).
-4. KK / Maschine: device **BlackHole 16ch**, Out 1 = **1 / 2** only (not aggregate Master). MIDI Input S88 Port 1; S8 off. KK quit if Maschine owns the S88.
-5. **Validate = today’s proof:** `python3 scripts/rig.py tone --device "Traktor S8 + BlackHole"` heard on S8 master. Traktor A plays on S8. S88 → KK or Maschine → **only Channel D** fader. A/B/C down.
-
-If that fails, destroy nothing; switch Traktor back to **Aggregate Device Maschine** and stop.
-
-### Step B — After Step A is solid: A/B/C → Maschine → S88 keys
+### Step B — A/B/C → Maschine → S88 keys — **done 2026-09-19**
 
 **Komplete Kontrol will not do this.** No live-deck sampler. Maschine records; S88 plays. KK stays quit.
 
-Internal mixing still has no “Output Deck A/B/C.” 16ch does not invent those buses. Decide Internal-vs-External (or Ext FX / sequential solo) before assigning BH 3–4, 5–6, 7–8. Never dump Master/Record onto the same pair that feeds Channel D.
+**Do not switch Mixing Mode to External.** That drops the S8 Internal mixer. NI Output Deck A/B/C and Send FX exist only in External. 16ch does not invent those buses.
 
-### Step C — Web check: Link vs audio
+**Do not use Ableton Link as the tap.** [NI](https://support.native-instruments.com/hc/en-us/articles/214423065-How-to-Sync-TRAKTOR-and-MASCHINE-Using-Ableton-Link): tempo and phase only. Dubspot-style writeups use Link for clock plus a **separate** loopback. That loopback here is already Maschine → BH 1–2 → Channel D (the reverse of 11a).
 
-Before inventing a tap, search what others did with **Traktor + Maschine + Ableton Link** (NI calls it Link; header button **LINK** in both apps). Official NI: Link syncs **tempo and phase only** on the same Mac or LAN. It does **not** move Channel A audio into Maschine. Dubspot-style writeups use Link for clock and a **separate** loopback for Maschine→Traktor D (the reverse of A/B/C→Maschine). Look for anyone who sampled Traktor decks into Maschine pads/keys; do not treat Link as the sample path.
+`Traktor S8 + BlackHole` I/O: S8 first (in 10 / out 4), then BlackHole 16ch. Named outs are S8 Master 1–2 and Monitor 3–4; unnamed outs 5–20 are BH 1–16. Named ins 1–10 are S8; unnamed ins 11–26 are BH 1–16.
 
-Start here: [NI — Sync Traktor and Maschine using Ableton Link](https://support.native-instruments.com/hc/en-us/articles/214423065-How-to-Sync-TRAKTOR-and-MASCHINE-Using-Ableton-Link).
+| Bus | Aggregate pair | BlackHole 16ch | Use |
+|-----|----------------|----------------|-----|
+| Master / Monitor | 1–2 / 3–4 | — | Leave. S8 listen. |
+| Channel D | In 11/12 (`In 10`/`In 11`), Out **5/6** | 1–2 | Maschine Out 1. **Never Record here.** |
+| Sample tap | Out **7/8** → In 13/14 | 3–4 | Output Record. Maschine In 2. |
+| Later decks | 9/10, 11/12, … | 5–6, 7–8, … | Spare. Same sequential tap can reuse 7/8. |
+
+GUI (apps stay open; do not rewrite the TSI):
+
+1. Traktor → Output Routing: stay **Internal**. Master **1/2**, Monitor **3/4**. Record **7 / 8** = `Out 6` / `Out 7`. Not **5/6** (`Out 4`/`Out 5` = D). Not **8/9** (`Out 7`/`Out 8` = split, same class as last night’s D In 11/12).
+2. Input D stays **11/12**. A/B/C inputs stay disconnected. FX Send stays disconnected.
+3. Isolate one deck: that fader up, the other two down, **D down** while recording (Record is the master mix).
+4. Maschine device stays **BlackHole 16ch**. Out 1 = **0/1**. Out 2+ disconnected. In 1 disconnected (loop). In 2 = **2/3** (BH 3–4). Input monitor **off**.
+5. Sampler source = Ext In 2 (3/4). Record. Then D fader up, play the S88 pad — Channel D only.
+6. Repeat for B, then C on the same Record pair.
+
+File fallback: Mix Recorder **Internal** → file → drag onto a pad. Same D-down rule if the file is the live mix.
+
+### Step C — Web check: Link vs audio — **done 2026-09-19**
+
+Link is clock. Official NI + Dubspot + Traktor 4 manual: Internal has Master / Monitor / Record only. Per-deck outs need External. This rig stays Internal and uses Record **7/8**.
 
 ### Step D — Then commit and push
 
 Only after Step A is validated (and notes updated). Sampling (B) can be the session after that if A ate the night.
+
+### Step E — FLX10 → Maschine In 3 (additive, do not touch 11a)
+
+`python3 scripts/rig.py flx10-2ch --create` makes **FLX10 + BlackHole 2ch** @ 44.1. Script aborts if BlackHole 16ch is not 48 kHz or `Traktor S8 + BlackHole` is not 26/20.
+
+`python3 scripts/rig.py flx10-bridge` copies BH 2ch onto BH 16ch **5–6** only. Never 1–4.
+
+**Parked 2026-09-19.** Rekordbox device **DDJ-FLX10** only. The 2ch aggregate is destroyed (it broke master/booth). Next try: PC MASTER OUT → `MASTER + BlackHole 2ch`. Never 16ch. MIDI = FLX10 only.
+
+Maschine In 3 = `In 4` / `In 5`. Sampler INPUT **In 3**. In 2 stays A/B/C.
 
 ---
 

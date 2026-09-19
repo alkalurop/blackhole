@@ -2,26 +2,26 @@
 
 Working mixer settings for Channel D live input. Do not commit `Traktor Settings.tsi`.
 
-**In this repo (download / restore):** [`files/Traktor-Settings-2026-08-22-working-2ch.tsi`](files/Traktor-Settings-2026-08-22-working-2ch.tsi) — 100 KB snapshot from disk after Channel D worked.
+**Live (2026-09-19):** device **Traktor S8 + BlackHole (CoreAudio)**. 16ch Channel D proven (tone + A stem + S88 on D). On-disk TSI may still say **Aggregate Device Maschine** until Traktor quits — GUI is the source of truth while the app is open.
 
-**Live on this Mac:** `~/Documents/Native Instruments/Traktor 4.5.1/Traktor Settings.tsi`
+**2ch rollback (download / restore):** [`files/Traktor-Settings-2026-08-22-working-2ch.tsi`](files/Traktor-Settings-2026-08-22-working-2ch.tsi) and `~/Music/blackhole_2ch/`. After restore, Audio Device **Aggregate Device Maschine**. Aggregate must exist first — `python3 scripts/rig.py aggregates --create`.
 
-Quit Traktor before replacing that file. Never rewrite the TSI while the app is open. After restore, confirm Audio Device is still **Aggregate Device Maschine** (the TSI stores the name; the aggregate must exist first — `python3 scripts/rig.py aggregates --create`).
+**Live file:** `~/Documents/Native Instruments/Traktor 4.5.1/Traktor Settings.tsi`. Quit Traktor before replacing. Never rewrite the TSI while the app is open.
 
 ## Audio Setup
 
 | Field | Working value |
 |-------|----------------|
-| Audio Device | **Aggregate Device Maschine (CoreAudio)** |
+| Audio Device | **Traktor S8 + BlackHole (CoreAudio)** (16ch live). Rollback: **Aggregate Device Maschine**. |
 | Sample Rate | **48000** Hz |
 | Buffer Size | **512** (27.3 ms overall on this Mac) |
 | Phono / Line | “not supported” on the aggregate — ignore |
 | Swap Channels | unused |
 | Multi-Core Processing | on |
 
-Do **not** select: `Traktor Kontrol S8` alone, `Traktor S8 + BlackHole` (16ch leftover), FLX10, BlackHole 2ch/16ch as Traktor’s device.
+Do **not** select: `Traktor Kontrol S8` alone, FLX10, or BlackHole 2ch/16ch as Traktor’s device (those have no S8 master outs).
 
-After a reboot, if Input D only lists Channel A L/R, Traktor is on a 2ch fallback (usually BlackHole 2ch). This Mac is set to **not** reopen apps at login. Launch Traktor yourself → Audio Device **Aggregate Device Maschine** → Input D **11 / 12**.
+After a reboot, if Input D only lists Channel A L/R, Traktor woke on a 2ch fallback. Launch Traktor yourself → Audio Device **Traktor S8 + BlackHole** → Input D **11 / 12**. Rollback device: **Aggregate Device Maschine**.
 
 ## Output Routing
 
@@ -30,16 +30,16 @@ After a reboot, if Input D only lists Channel A L/R, Traktor is on a 2ch fallbac
 | Mixing Mode | **Internal** |
 | Output Master L / R | **1 Master Left / 2 Master Right** (S8) |
 | Output Monitor L / R | **3 Monitor Left / 4 Monitor Right** (S8 phones) |
-| Output Record | **- not connected -** |
+| Output Record | **7 / 8** = `Out 6` / `Out 7` (BH 3–4). Idle: **- not connected -**. Never **5 / 6** (`Out 4`/`Out 5` = D). Never **8 / 9** (split). |
 
-Record on aggregate **5 / 6** (BlackHole) while Channel D is in the master = feedback. Mix Recorder **Internal** to a file is the 2ch resample. Live A→Maschine tap waits for 16ch.
+Record on the first BlackHole pair (aggregate **5 / 6** = BH 1–2) while Channel D is in the master = feedback. 11a live tap is Record **7 / 8** (BH 3–4) with D fader **down** while sampling (Record is the Internal master mix, not a per-deck out). Mix Recorder **Internal** → file is the no-routing fallback. Do not switch Mixing Mode to External.
 
 ## Input Routing
 
 | Field | Working value |
 |-------|----------------|
 | Input Deck A / B / C | not connected |
-| Input Deck D L / R | **11 / 12** (`Aggregate Device Maschine In 10` / `In 11` — 0-based names for BlackHole 2ch 1–2) |
+| Input Deck D L / R | **11 / 12** (0-based `In 10` / `In 11` — first BlackHole pair on the 16ch aggregate; same numbers as the 2ch night) |
 | Input FX Send (Ext) | not connected |
 | Input Aux | not connected |
 

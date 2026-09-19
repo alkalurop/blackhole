@@ -371,3 +371,57 @@ Traktor came back from login restore on a 2ch box. Input D menu was only Channel
 KISS: Mac boots empty. Persistence off (`TALLogoutSavesState` / `LoginwindowLaunchesRelaunchApps` / `NSQuitAlwaysKeepsWindows` all false). Did not strip Google Drive, Dropbox, NI hardware agents, Adobe CC, or Autodesk Flow.
 
 **Epic Games Launcher** was a silent boot agent (`com.epicgames.launcher`, `-launchcontext=boot`). Disabled the job, `RunAtLoad` false, `StartOnBoot=False`. Next Epic session: uncheck **Run When My Computer Starts** so it does not put the agent back.
+
+---
+
+## 2026-09-19 — 2ch archive before 16ch
+
+David opened the 11 / 11a session. First step only: dump everything that still works into `~/Music/blackhole_2ch/` (off git). Live graph still matches 2026-08-22: Traktor on **Aggregate Device Maschine**, KK + Maschine on **BlackHole 2ch**, Deck D = 11/12. Leftover `Traktor S8 + BlackHole` (16ch) still present — do not select. S88 is on the dock hub tonight (`@01142000`); preferred remains direct USB + wall wart.
+
+Did **not** port to 16ch yet. Did **not** commit. Rollback is that Music folder.
+
+---
+
+## 2026-09-19 — 16ch Channel D (GUI + sound)
+
+Tone on `Traktor S8 + BlackHole` reached S8 first; apps were still on 2ch. Then the real flip:
+
+- Traktor device **Traktor S8 + BlackHole**. First D assignment was In 11/12 (BH 3–4 / split pair) — **right channel only**. Corrected to **11/12 = In 10/In 11** (BH 1–2). Stereo returned.
+- A/B/C inputs disconnected. FX Send disconnected (had been Master 9/10).
+- Maschine **BlackHole 16ch**, Out 1 = 0/1, Out 2+ disconnected.
+- David: sound checks.
+
+2ch aggregates left in place. Post-quit dump (TSI + Maschine plist flushed): `~/Music/blackhole_16ch_2026_09_19_0755/`. Earlier open-apps copy: `…0754/`.
+
+---
+
+## 2026-09-19 — 11a started (Internal sequential tap)
+
+Stay **Internal**. External would give Deck A/B/C outs and kill the S8 mixer. Link is clock only (NI + Dubspot).
+
+Tap map on `Traktor S8 + BlackHole` (S8 10/4, then BH 16ch → 26/20):
+
+- Leave Master 1–2 / Monitor 3–4 / D = In 11/12.
+- **Never** Record **5/6** (BH 1–2 = D).
+- Record **7/8** = BH 3–4. Maschine In 2 = 2/3. Sampler Ext In 2, monitor off. D fader down while capturing; pad plays back on D.
+- KK quit (already). Rekordbox still running — leftover S8/S88 maps stay unused.
+
+**Proven.** A onto RunDeep Sound 10 (`20260919T081910`), then B and C on the same Record page. S88 through Channel D. David: A Awesome; B and C check.
+
+---
+
+## 2026-09-19 — FLX10 plugged in; 11b not built
+
+`DDJ-FLX10` 10/4 @ **44100 only** (AlphaTheta). Pioneer `rekordbox Aggregate Device` now 10/6 @ 44.1. Did **not** create FLX10+16ch — that would retune BlackHole 16ch and kill the 48 kHz S8 graph. Leftover S8/S88 Rekordbox maps still unused.
+
+---
+
+## 2026-09-19 — 11b aggregate + bridge (not proven)
+
+Created **FLX10 + BlackHole 2ch** (12/6 @ 44.1). BlackHole 16ch stayed **48 kHz**. `Traktor S8 + BlackHole` stayed **26/20**. Defaults unchanged. Bridge writes 16ch **5–6** only (`python3 scripts/rig.py flx10-bridge`). Waiting on Rekordbox device + Maschine In 3 + a take.
+
+---
+
+## 2026-09-19 — 11b parked
+
+Rekordbox on the aggregate broke FLX10 master / booth / receiver. David punted. Bridge stopped. `FLX10 + BlackHole 2ch` destroyed. 11a still 16ch @ 48 kHz / 26/20. Rekordbox = **DDJ-FLX10**. Next try: PC MASTER OUT + `MASTER + BlackHole 2ch`.

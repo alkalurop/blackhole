@@ -14,6 +14,9 @@ Usage (from repo root):
   python3 scripts/rig.py aggregates --destroy
   python3 scripts/rig.py leftover-16ch --create
   python3 scripts/rig.py leftover-16ch --destroy
+  python3 scripts/rig.py flx10-2ch --create
+  python3 scripts/rig.py flx10-2ch --destroy
+  python3 scripts/rig.py flx10-bridge
 """
 
 from __future__ import annotations
@@ -37,6 +40,22 @@ def run_swift(script: str, extra: list[str] | None = None) -> int:
         cmd.extend(extra)
     print("+", " ".join(cmd), file=sys.stderr)
     return subprocess.call(cmd)
+
+
+def run_compiled_swift(script: str, binary_name: str) -> int:
+    """Compile once to /tmp so AudioToolbox scripts are not interpreted."""
+    src = SCRIPTS / script
+    if not src.is_file():
+        print(f"missing {src}", file=sys.stderr)
+        return 2
+    dest = Path("/tmp") / binary_name
+    cmd = ["swiftc", "-O", str(src), "-o", str(dest)]
+    print("+", " ".join(cmd), file=sys.stderr)
+    compiled = subprocess.call(cmd)
+    if compiled != 0:
+        return compiled
+    print("+", dest, file=sys.stderr)
+    return subprocess.call([str(dest)])
 
 
 def usb_ni() -> None:
@@ -94,6 +113,16 @@ def cmd_leftover(args: argparse.Namespace) -> int:
     return run_swift("traktor_s8_blackhole_aggregate.swift")
 
 
+def cmd_flx10_2ch(args: argparse.Namespace) -> int:
+    if args.destroy:
+        return run_swift("flx10_blackhole_2ch_aggregate.swift", ["--destroy"])
+    return run_swift("flx10_blackhole_2ch_aggregate.swift")
+
+
+def cmd_flx10_bridge(_: argparse.Namespace) -> int:
+    return run_compiled_swift("flx10_bridge.swift", "ix-flx10-bridge")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="ix BlackHole / S8 / S88 rig tools. See docs/RUNBOOK.md."
@@ -124,6 +153,19 @@ def main() -> int:
     g16.add_argument("--create", action="store_true")
     g16.add_argument("--destroy", action="store_true")
 
+    p_flx = sub.add_parser(
+        "flx10-2ch",
+        help="Create or destroy FLX10 + BlackHole 2ch (Rekordbox-only, 44.1). Leaves 16ch/11a alone.",
+    )
+    gflx = p_flx.add_mutually_exclusive_group(required=True)
+    gflx.add_argument("--create", action="store_true")
+    gflx.add_argument("--destroy", action="store_true")
+
+    sub.add_parser(
+        "flx10-bridge",
+        help="SRC BlackHole 2ch → BlackHole 16ch 5–6 only. Ctrl-C to stop.",
+    )
+
     args = parser.parse_args()
     dispatch = {
         "status": cmd_status,
@@ -131,6 +173,8 @@ def main() -> int:
         "midi": cmd_midi,
         "aggregates": cmd_aggregates,
         "leftover-16ch": cmd_leftover,
+        "flx10-2ch": cmd_flx10_2ch,
+        "flx10-bridge": cmd_flx10_bridge,
     }
     return dispatch[args.cmd](args)
 

@@ -2,11 +2,11 @@
 
 David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
 
-**2026-08-22 — success intensifies.** S88 keys (Light Guide and all) into Komplete Kontrol or Maschine, down **BlackHole 2ch**, into Traktor Channel D, out the S8 fader. Not the whole mixer. That was the fight. We won.
+**2026-09-19 — 16ch Channel D live.** Traktor device **Traktor S8 + BlackHole**. Deck D = In 10/11 (BH 1–2). Maschine **BlackHole 16ch** Out 1 only. S88 → Channel D. 2ch rollback: **Aggregate Device Maschine** + `~/Music/blackhole_2ch/`.
 
-Traktor’s box: **Aggregate Device Maschine** (S8 + BlackHole 2ch + Mac speakers). S88 straight into the Mac + wall wart. Rekordbox / FLX10 stays a later problem — leftover maps on disk, keep RB shut.
+**11a live.** Traktor Record **7/8** (`Out 6`/`Out 7`) → Maschine In 2 → S88 → Channel D. Never Record **5/6**.
 
-**Next time:** copy this graph onto **16ch**, prove it still behaves, *then* tap Traktor A/B/C into Maschine for S88 sampling. KK does not sample decks. Ableton Link is clock, not audio. Cataloging lives in another repo until then.
+**11b parked.** Rekordbox stays **DDJ-FLX10**. Do not select an FLX10+BlackHole aggregate as the device (breaks master / booth / receiver). Next try: PC MASTER OUT → `MASTER + BlackHole 2ch`. Next hardware: S8 pads → S88 (**13**).
 
 Library: [ixamal/music_migration](https://github.com/ixamal/music_migration). License: [Apache-2.0](LICENSE).
 

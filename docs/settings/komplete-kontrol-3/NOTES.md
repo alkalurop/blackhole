@@ -4,14 +4,14 @@ Preferences that exist: **Audio, MIDI, General, Library, Plug-ins**. There is no
 
 **In this repo:** [`files/`](files/) — `Komplete-Kontrol-MK2-Settings.dat` (15 KB) and `com.native-instruments.Komplete-Kontrol.plist`.
 
-**Live on this Mac:** `~/Library/Application Support/Native Instruments/Komplete Kontrol/` and `~/Library/Preferences/com.native-instruments.Komplete Kontrol.plist`. Quit KK before replacing. After restore, confirm Audio = **BlackHole 2ch** and MIDI Input **Port 1** only — the dump is a snapshot, the NOTES are the source of truth if they drift.
+**Live on this Mac:** `~/Library/Application Support/Native Instruments/Komplete Kontrol/` and `~/Library/Preferences/com.native-instruments.Komplete Kontrol.plist`. Quit KK before replacing. After restore, confirm Audio = **BlackHole 16ch** (rollback **BlackHole 2ch**) and MIDI Input **Port 1** only — the dump is a snapshot, the NOTES are the source of truth if they drift.
 
 ## Audio (Channel D)
 
 | Field | Working value |
 |-------|----------------|
 | Driver | CoreAudio |
-| Device | **BlackHole 2ch** |
+| Device | **BlackHole 16ch** (rollback: **BlackHole 2ch**) |
 | Sample Rate | 48000 |
 | Buffer Size | 512 |
 | Out 1 L / R | **1** / **2** |

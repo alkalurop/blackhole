@@ -16,6 +16,9 @@ Full procedure: [`docs/RUNBOOK.md`](../docs/RUNBOOK.md).
 | `aggregates --destroy` | same `--destroy` | Those two only |
 | `leftover-16ch --create` | `traktor_s8_blackhole_aggregate.swift` | Last night / future `Traktor S8 + BlackHole` (16ch) |
 | `leftover-16ch --destroy` | same `--destroy` | That leftover only |
+| `flx10-2ch --create` | `flx10_blackhole_2ch_aggregate.swift` | Rekordbox-only `FLX10 + BlackHole 2ch` @ 44.1. Does not touch 16ch. |
+| `flx10-2ch --destroy` | same `--destroy` | That box only |
+| `flx10-bridge` | `flx10_bridge.swift` | BH 2ch → BH 16ch **5–6** only (SRC). Ctrl-C stops. |
 
 Direct Swift (same as the CLI):
 
