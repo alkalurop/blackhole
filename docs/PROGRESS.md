@@ -424,4 +424,4 @@ Created **FLX10 + BlackHole 2ch** (12/6 @ 44.1). BlackHole 16ch stayed **48 kHz*
 
 ## 2026-09-19 — 11b parked
 
-Rekordbox on the aggregate broke FLX10 master / booth / receiver. David punted. Bridge stopped. `FLX10 + BlackHole 2ch` destroyed. 11a still 16ch @ 48 kHz / 26/20. Rekordbox = **DDJ-FLX10**. Next try: PC MASTER OUT + `MASTER + BlackHole 2ch`.
+Rekordbox on the aggregate broke FLX10 master / booth / receiver. David punted. Bridge stopped. `FLX10 + BlackHole 2ch` destroyed. 11a still 16ch @ 48 kHz / 26/20. Rekordbox = **DDJ-FLX10**. Next try: PC MASTER OUT + `MASTER + BlackHole 2ch`. **13 on hold** (S8 pads → S88). Next work is Floor on ix.
