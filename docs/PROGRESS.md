@@ -433,3 +433,9 @@ Rekordbox on the aggregate silenced FLX10 master / booth / the Sony. David punte
 Prefs matched the live rig. S8 phones silent, FLX10 CH2 silent. Power-down order: Maschine, Traktor, S88, S8.
 
 Maschine quit first and the S88 reverb came through on S8 Channel D (Traktor still open). Deck D path is alive. Then Traktor, S88, S8. S8 power-off left analog hum on the FLX10; Sony **STR-AN1000** was cranked, so the open CH2 LINE input became obvious. Hum was not heard while the S8 was on. Leave the iDefender in. Sony and CH2 TRIM down before the S8 drops. Power up: Sony/TRIM down, S8, S88, Traktor, prove phones + D, then CH2 LINE and Sony up, Maschine last. **Proven same day:** David booted S8 → S88 → Traktor → Maschine and the rig came back. **Functioning checkpoint 13:11 CDT:** `~/Music/blackhole_16ch_2026-09-23_1311/` (apps open; TSI already `Traktor S8 + BlackHole`). Detail: `ix` `docs/notes.md`.
+
+---
+
+## 2026-09-23 — CH2 LINE is not a BlackHole input
+
+David asked for the S8 mix on FLX10 CH2 as a digital / MIDI feed, then whether LINE can take BlackHole the way Deck D does. It cannot. LINE is the RCA. A/B are DJ decks, and Rekordbox has no Live Input. CoreAudio outs are master and phones. Rig left as the 13:11 checkpoint. Notes: `docs/settings/rekordbox-7-flx10/NOTES.md` and `ix` `docs/notes.md`.

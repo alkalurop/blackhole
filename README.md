@@ -8,7 +8,7 @@ David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalu
 
 **11a live.** Traktor Record **7/8** (`Out 6`/`Out 7`) → Maschine In 2 → S88 → Channel D. Never Record **5/6**.
 
-**11b parked.** Rekordbox stays **DDJ-FLX10**. Do not select an FLX10+BlackHole aggregate as the device (breaks master / booth / receiver). Next try: PC MASTER OUT → `MASTER + BlackHole 2ch`. **13 on hold** (S8 pads → S88). Next work is Floor on [ixamal/ix](https://github.com/ixamal/ix).
+**11b parked.** Rekordbox stays **DDJ-FLX10**. The 2026-09-19 aggregate silence was a reboot. **40:** CH2 **LINE** is the S8 RCA. It cannot take BlackHole the way Channel D does. **13 on hold** (S8 pads → S88). Next work is Floor on [ixamal/ix](https://github.com/ixamal/ix).
 
 Library: [ixamal/music_migration](https://github.com/ixamal/music_migration). License: [Apache-2.0](LICENSE).
 

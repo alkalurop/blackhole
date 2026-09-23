@@ -36,10 +36,8 @@ New notes only: isolate MIDI so Rekordbox cannot bind S8 or S88. Dual-software i
 
 Using `FLX10 + BlackHole 2ch` as the Rekordbox **device** silenced master, booth, and the Sony. David, 2026-09-23: that silence needed a reboot. It is not a ban on a digital feed. The aggregate was destroyed that day. Rekordbox is on **DDJ-FLX10** until a deliberate retry. Bridge stopped. 11a (16ch @ 48 kHz, 26/20) untouched.
 
-**2026-09-23 target (TODO 40, not 11b).** Whole S8/Traktor mix on FLX10 **CH2 switch B**. **LINE** stays the analog tester. S8 master and booth jacks should sit idle. Room hub is the FLX10: Sony STR-AN1000 master, AudioQuest + sub controller → SVS sub, KRK Rokit 5 booth. Serials later.
+**2026-09-23 afternoon (TODO 40, not 11b).** LINE cannot be fed like S8 Channel D. Channel D is Traktor Live Input on BlackHole (aggregate In 10/11) with the TRAKTOR button. FLX10 LINE is the rear RCA, mixed in hardware. A/B play a deck from DJ software; Rekordbox has no Live Input. One `DDJ-FLX10` in CoreAudio is 10 in / 4 out at 44.1: master and phones. There is no channel-2 output to write. Those four outs skip the fader and can reach the Sony. Setting Utility “CH2 Control Tone DIGITAL” is mixer → computer. Working feed is the S8 RCA on LINE. No bridge was started. Detail: `ix` `docs/notes.md`.
 
-B is the second USB port (PC-B). This Mac is on one port, so B is silent. Next try when David says go: second cable into the other FLX10 USB port, Rekordbox stays on the current device, bridge Traktor Record **7/8** into that second device’s channel-2 output at 44.1. Sony down. Move only CH2 to B.
-
-PC MASTER OUT → `MASTER + BlackHole 2ch` lands on the master bus, not on the CH2 fader. Scripts remain (`flx10-2ch`, `flx10-bridge`). A retry of `flx10-2ch` as the Rekordbox device waits until David asks, with the Sony down, and a reboot if the receiver drops.
+PC MASTER OUT → `MASTER + BlackHole 2ch` lands on the master bus, not on the CH2 fader. Scripts remain (`flx10-2ch`, `flx10-bridge`). Do not point them at FLX10 Out 0/1. A retry of `flx10-2ch` as the Rekordbox device still waits until David asks, Sony down, reboot if the receiver drops. It does not create a CH2 input.
 
 Do not add FLX10 to `Traktor S8 + BlackHole`. Do not edit `rekordbox Aggregate Device`. Leftover S8/S88 maps stay off.
