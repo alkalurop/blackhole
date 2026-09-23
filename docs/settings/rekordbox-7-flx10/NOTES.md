@@ -34,8 +34,12 @@ New notes only: isolate MIDI so Rekordbox cannot bind S8 or S88. Dual-software i
 
 ## 11b — FLX10 → Maschine In 3 — **parked 2026-09-19**
 
-Using `FLX10 + BlackHole 2ch` as the Rekordbox **device** broke FLX10 master / booth / receiver. That aggregate is **destroyed**. Rekordbox stays **DDJ-FLX10**. Bridge stopped. 11a (16ch @ 48 kHz, 26/20) untouched.
+Using `FLX10 + BlackHole 2ch` as the Rekordbox **device** silenced master, booth, and the Sony. David, 2026-09-23: that silence needed a reboot. It is not a ban on a digital feed. The aggregate was destroyed that day. Rekordbox is on **DDJ-FLX10** until a deliberate retry. Bridge stopped. 11a (16ch @ 48 kHz, 26/20) untouched.
 
-Next try, when David asks: native **DDJ-FLX10** + **PC MASTER OUT** → `MASTER + BlackHole 2ch` (never 16ch). Scripts remain (`flx10-2ch`, `flx10-bridge`).
+**2026-09-23 target (TODO 40, not 11b).** Whole S8/Traktor mix on FLX10 **CH2 switch B**. **LINE** stays the analog tester. S8 master and booth jacks should sit idle. Room hub is the FLX10: Sony STR-AN1000 master, AudioQuest + sub controller → SVS sub, KRK Rokit 5 booth. Serials later.
+
+B is the second USB port (PC-B). This Mac is on one port, so B is silent. Next try when David says go: second cable into the other FLX10 USB port, Rekordbox stays on the current device, bridge Traktor Record **7/8** into that second device’s channel-2 output at 44.1. Sony down. Move only CH2 to B.
+
+PC MASTER OUT → `MASTER + BlackHole 2ch` lands on the master bus, not on the CH2 fader. Scripts remain (`flx10-2ch`, `flx10-bridge`). A retry of `flx10-2ch` as the Rekordbox device waits until David asks, with the Sony down, and a reboot if the receiver drops.
 
 Do not add FLX10 to `Traktor S8 + BlackHole`. Do not edit `rekordbox Aggregate Device`. Leftover S8/S88 maps stay off.

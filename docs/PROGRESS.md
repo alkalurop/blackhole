@@ -424,4 +424,12 @@ Created **FLX10 + BlackHole 2ch** (12/6 @ 44.1). BlackHole 16ch stayed **48 kHz*
 
 ## 2026-09-19 — 11b parked
 
-Rekordbox on the aggregate broke FLX10 master / booth / receiver. David punted. Bridge stopped. `FLX10 + BlackHole 2ch` destroyed. 11a still 16ch @ 48 kHz / 26/20. Rekordbox = **DDJ-FLX10**. Next try: PC MASTER OUT + `MASTER + BlackHole 2ch`. **13 on hold** (S8 pads → S88). Next work is Floor on ix.
+Rekordbox on the aggregate silenced FLX10 master / booth / the Sony. David punted. Bridge stopped. `FLX10 + BlackHole 2ch` destroyed. 11a still 16ch @ 48 kHz / 26/20. Rekordbox = **DDJ-FLX10**. **2026-09-23 correction:** that silence needed a reboot. Not a ban on a digital feed. **13 on hold** (S8 pads → S88). Next work is Floor on ix.
+
+---
+
+## 2026-09-23 — Shutdown: D spoke, then FLX10 hum
+
+Prefs matched the live rig. S8 phones silent, FLX10 CH2 silent. Power-down order: Maschine, Traktor, S88, S8.
+
+Maschine quit first and the S88 reverb came through on S8 Channel D (Traktor still open). Deck D path is alive. Then Traktor, S88, S8. S8 power-off left analog hum on the FLX10; Sony **STR-AN1000** was cranked, so the open CH2 LINE input became obvious. Hum was not heard while the S8 was on. Leave the iDefender in. Sony and CH2 TRIM down before the S8 drops. Power up: Sony/TRIM down, S8, S88, Traktor, prove phones + D, then CH2 LINE and Sony up, Maschine last. **Proven same day:** David booted S8 → S88 → Traktor → Maschine and the rig came back. **Functioning checkpoint 13:11 CDT:** `~/Music/blackhole_16ch_2026-09-23_1311/` (apps open; TSI already `Traktor S8 + BlackHole`). Detail: `ix` `docs/notes.md`.
