@@ -6,6 +6,12 @@ This file + `git log` is the project journal.
 
 ---
 
+## 2026-09-23 — Tracker on ixamal
+
+Done era: [16ch Channel D](https://github.com/ixamal/blackhole/milestone/1) ([#2](https://github.com/ixamal/blackhole/issues/2)). Parked: [FLX10 digital](https://github.com/ixamal/blackhole/milestone/2) ([#1](https://github.com/ixamal/blackhole/issues/1)). Canonical Floor / crate queue: [ixamal/ix milestones](https://github.com/ixamal/ix/milestones?state=all). Docs: ix `docs/tracker.md`. Alkalurop mirrors git only.
+
+---
+
 ## 2026-08-21 — Repo bootstrap
 
 Created `~/github/ixamal/blackhole` (GitHub `ixamal/blackhole`). Nested with `music_migration` under `~/github/ixamal/`. `~/github/alkalurop/` remains empty for org repos.
