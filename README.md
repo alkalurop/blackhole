@@ -1,8 +1,8 @@
 # blackhole
 
-**If you DJ:** this documents how Maschine, Traktor, Rekordbox, and NI controllers share one Mac — who hears what on the S8, when Channel D is live input, and how not to lose Rekordbox’s sample bank when you open another app. It began when routing by guesswork kept breaking mid-set.
+How my live rig actually routes: Maschine, Traktor S8, Rekordbox on the FLX10, S88, BlackHole — who hears what, and which order to quit apps so Rekordbox’s sample bank does not vanish. Written because guessing broke more sets than bad transitions.
 
-David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
+Docs and small scripts, not audio. [ixamal](https://github.com/ixamal) · [alkalurops.org](https://www.alkalurops.org)
 
 **Vibe coding.** Cursor and Codex only. Git commits are David — no Cursor or Codex co-author trailers.
 
