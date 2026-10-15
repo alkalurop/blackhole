@@ -91,7 +91,7 @@ That KK path is **not** Channel D. KK sums onto S8 master/phones at Core Audio. 
 3. **S88 + KK** — MIDI Input Port 1; audio **BlackHole 2ch** → Channel D. **Working.**
 4. **Maschine** — same 2ch pair; quit KK so the S88 is free. **Working enough to pause.**
 5. **16ch Channel D + 11a** — **proven 2026-09-19.** Internal Record **7/8** → Maschine In 2 → S88 → D. Link is clock.
-6. **FLX10 → Maschine (11b)** — **parked.** Native `DDJ-FLX10` required. Next try: PC MASTER OUT + BlackHole 2ch, never 16ch. Leftover S8/S88 maps unused.
+6. **FLX10 → Maschine (11b)** — **parked.** Native `DDJ-FLX10` required. Next try: PC MASTER OUT + BlackHole 2ch, never 16ch. Leftover S8/S88 maps unused. **2026-10-11:** launching Traktor or Maschine while Rekordbox is already open kills the sample-bank drop. Quit Maschine, then Traktor, then Rekordbox, and open Rekordbox again. Do not retarget Rekordbox at BlackHole.
 
 ---
 

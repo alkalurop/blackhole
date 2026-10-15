@@ -175,6 +175,22 @@ Preferences → **Audio**:
 
 KK and Maschine both want the S88. For Maschine-only: **quit KK**. MK2 talks to Maschine 2 without KK open.
 
+### Silence when the DJ stack is down (2026-10-08, fixed)
+
+**Symptom:** With **Maschine** and **Traktor** quit, S88 keys still play **The Gentleman** (or another default KK piano) on the **S88’s own master / headphone outs**. That is wrong for this rig — keys should do **nothing** when the performance chain is off.
+
+**Cause:** **Komplete Kontrol standalone** (or **Kontakt**) was still running. The Gentleman patch lives in KK/Kontakt, not in Maschine or Traktor. Quitting DJ apps does **not** quit KK. NI background agents (**NIHardwareAgent**, **NIHostIntegrationAgent**, **NTKDaemon**) stay up at login; they do **not** play piano by themselves.
+
+**Fix (proven):**
+
+1. **⌘Q Komplete Kontrol** (`/Applications/Native Instruments/Komplete Kontrol`). Force Quit if needed. Same for **Kontakt 8** if it was open standalone.
+2. Confirm **Activity Monitor** — no `Komplete Kontrol`, `Kontakt`, `Maschine`, or `Traktor`.
+3. Keys silent on S88 outs. Optional hard off: S88 power or unplug USB.
+
+**When performing (Channel D):** **Maschine** owns keys → **BlackHole 16ch** Out 0/1 → Traktor deck **D**. **KK stays quit.** KK **Preferences → Audio** for the live path is **BlackHole 16ch** (or 2ch on Intel rollback), **not** the S88 as the output device — otherwise you get local piano on the keyboard’s outs instead of (or in addition to) the BlackHole → S8 D path.
+
+**Login items:** Do not auto-launch Komplete Kontrol on boot if you want a quiet desk until you open Maschine/Traktor yourself.
+
 ---
 
 ## 6. Maschine 2
@@ -233,6 +249,7 @@ Optional: `python3 scripts/rig.py midi` sends middle C to `Komplete Kontrol DAW 
 | Firmware flash | Not needed. KK 3.5.4 already claimed the S88. |
 | S88 on dock hub | Worked after MIDI Input; direct USB is still the preferred cable. |
 | Output Record → BH while D is up | Feedback. Mix Recorder to a **file** is the 2ch resample. Live A→Maschine tap wants 16ch. |
+| Maschine + Traktor quit, piano on S88 outs | **Komplete Kontrol** still open (Gentleman). Quit KK/Kontakt — see §5 *Silence when the DJ stack is down*. |
 | Gemini “Master = FLX10 9–10” | Does not match Intel screenshots. |
 
 Browse vs load: Battery ticks in the KK browser are **prehear**. Pianos often have none. Load the preset until the computer name matches, leave the browser, then play.
@@ -306,6 +323,8 @@ Only after Step A is validated (and notes updated). Sampling (B) can be the sess
 `python3 scripts/rig.py flx10-bridge` copies BH 2ch onto BH 16ch **5–6** only. Never 1–4.
 
 **Parked 2026-09-19.** Rekordbox device **DDJ-FLX10** only. The 2ch aggregate is destroyed (it broke master/booth). Next try: PC MASTER OUT → `MASTER + BlackHole 2ch`. Never 16ch. MIDI = FLX10 only.
+
+**Sampler drop (proved 2026-10-11).** Opening Traktor or Maschine while Rekordbox is already running restarts Core Audio. The FLX10 deck can keep playing while a CAPTURE drag onto the sample bank does nothing. Quit **Maschine**, then **Traktor**, then **Rekordbox**, then open Rekordbox. **Preferences → Audio** stays **DDJ-FLX10**. If that quit order does not restore the drop, reboot (same class as the 2026-09-23 silence). Do not rebuild the aggregate. Write-up: [ixamal/ix](https://github.com/ixamal/ix) `docs/examples/traktor-master-class-notes.md` and `docs/notes.md`.
 
 Maschine In 3 = `In 4` / `In 5`. Sampler INPUT **In 3**. In 2 stays A/B/C.
 

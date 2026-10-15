@@ -1,5 +1,7 @@
 # blackhole
 
+**If you DJ:** this documents how Maschine, Traktor, Rekordbox, and NI controllers share one Mac — who hears what on the S8, when Channel D is live input, and how not to lose Rekordbox’s sample bank when you open another app. It began when routing by guesswork kept breaking mid-set.
+
 David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalurops.org](https://www.alkalurops.org).
 
 **Vibe coding.** Cursor and Codex only. Git commits are David — no Cursor or Codex co-author trailers.
@@ -8,7 +10,7 @@ David’s performance rig on `ix`. [ixamal](https://github.com/ixamal) / [alkalu
 
 **11a live.** Traktor Record **7/8** (`Out 6`/`Out 7`) → Maschine In 2 → S88 → Channel D. Never Record **5/6**.
 
-**11b parked.** Rekordbox stays **DDJ-FLX10**. The 2026-09-19 aggregate silence was a reboot. **40:** CH2 **LINE** is the S8 RCA. It cannot take BlackHole the way Channel D does. **13 on hold** (S8 pads → S88). Next work is Floor on [ixamal/ix](https://github.com/ixamal/ix).
+**11b parked.** Rekordbox stays **DDJ-FLX10**. The 2026-09-19 aggregate silence was a reboot. **2026-10-11:** opening Traktor or Maschine while Rekordbox is already up kills the sample-bank drop. Quit Maschine, then Traktor, then Rekordbox, and open Rekordbox again. **40:** CH2 **LINE** is the S8 RCA. It cannot take BlackHole the way Channel D does. **13 on hold** (S8 pads → S88). Next work is Floor on [ixamal/ix](https://github.com/ixamal/ix).
 
 Library: [ixamal/music_migration](https://github.com/ixamal/music_migration). License: [Apache-2.0](LICENSE).
 

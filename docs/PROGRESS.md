@@ -6,6 +6,12 @@ This file + `git log` is the project journal.
 
 ---
 
+## 2026-10-11 — Rekordbox sampler drop
+
+Opening Traktor and Maschine with Rekordbox already up restarted Core Audio. Sample-bank drag died. Playback did not. Quit order that restored it: **Maschine**, **Traktor**, **Rekordbox**, then Rekordbox again. Device stayed **DDJ-FLX10**. Noted on ix in `docs/notes.md` and `docs/examples/traktor-master-class-notes.md`.
+
+---
+
 ## 2026-09-23 — Tracker on ixamal
 
 Done era: [16ch Channel D](https://github.com/ixamal/blackhole/milestone/1) ([#2](https://github.com/ixamal/blackhole/issues/2)). Parked: [FLX10 digital](https://github.com/ixamal/blackhole/milestone/2) ([#1](https://github.com/ixamal/blackhole/issues/1)). Canonical Floor / crate queue: [ixamal/ix milestones](https://github.com/ixamal/ix/milestones?state=all). Docs: ix `docs/tracker.md`. Alkalurop mirrors git only.
